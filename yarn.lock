@@ -1002,6 +1002,11 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
+dotenv@^16.0.3:
+  version "16.0.3"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.0.3.tgz#115aec42bac5053db3c456db30cc243a5a836a07"
+  integrity sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==
+
 emoji-regex@^8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-8.0.0.tgz#e818fd69ce5ccfcb404594f842963bf53164cc37"
@@ -1984,6 +1989,21 @@ minimist@^1.2.0, minimist@^1.2.6:
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.8.tgz#c1a464e7693302e082a075cee0c057741ac4772c"
   integrity sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==
+
+mobx-react-lite@^3.4.3:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/mobx-react-lite/-/mobx-react-lite-3.4.3.tgz#3a4c22c30bfaa8b1b2aa48d12b2ba811c0947ab7"
+  integrity sha512-NkJREyFTSUXR772Qaai51BnE1voWx56LOL80xG7qkZr6vo8vEaLF3sz1JNUVh+rxmUzxYaqOhfuxTfqUh0FXUg==
+
+mobx-state-tree@^5.1.8:
+  version "5.1.8"
+  resolved "https://registry.yarnpkg.com/mobx-state-tree/-/mobx-state-tree-5.1.8.tgz#d42b07db510e8819386e390a7e2ae0c4d6706821"
+  integrity sha512-oe82BNgMr408e6DxMDNat8msXQTuyuqzJ97DPupbhchEfjjHyjsmPSwtXHl+nXiW3tybpb/cr5siUClBqKqv+Q==
+
+mobx@^6.9.0:
+  version "6.9.0"
+  resolved "https://registry.yarnpkg.com/mobx/-/mobx-6.9.0.tgz#8a894c26417c05bed2cf7499322e589ee9787397"
+  integrity sha512-HdKewQEREEJgsWnErClfbFoVebze6rGazxFLU/XUyrII8dORfVszN1V0BMRnQSzcgsNNtkX8DHj3nC6cdWE9YQ==
 
 ms@2.1.2:
   version "2.1.2"
