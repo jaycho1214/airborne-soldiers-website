@@ -1,7 +1,8 @@
-import { auth, database } from '@/api';
-import { IUser, User } from '@/stores';
 import { child, get, ref, set } from 'firebase/database';
 import { ReactNode, createContext, useEffect, useState } from 'react';
+import { flushSync } from 'react-dom';
+import { auth, database } from '@/api';
+import { IUser, User } from '@/stores';
 
 export interface UserContextType {
   user?: IUser | null;
@@ -22,17 +23,19 @@ export function UserProvider({ children }: { children?: ReactNode }) {
       if (user) {
         setLoading(true);
         get(child(ref(database), `users/${user.uid}`)).then((snapshot) => {
-          if (snapshot.exists()) {
-            setUser(User.create(snapshot.val()));
-          } else {
-            setUser(null);
-          }
+          flushSync(() => {
+            if (snapshot.exists()) {
+              setUser(User.create(snapshot.val()));
+            } else {
+              setUser(null);
+            }
+          });
           setLoading(false);
         });
       } else {
         setUser(null);
+        setLoading(false);
       }
-      setLoading(false);
     });
 
     return unsubscribe;
