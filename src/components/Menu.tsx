@@ -1,5 +1,6 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from 'next/link';
 import { AnchorHTMLAttributes, DetailedHTMLProps } from 'react';
 
 export interface MenuProps
@@ -16,10 +17,14 @@ export default function Menu({
   icon,
   style,
   className,
+  href,
+  ref,
   ...rest
 }: MenuProps) {
   return (
-    <a
+    <Link
+      {...rest}
+      href={href ?? '#'}
       className={`flex p-7 align-middle ${className}`}
       style={{ borderRadius: 15, backgroundColor: '#1C1C1C', ...style }}
     >
@@ -29,6 +34,6 @@ export default function Menu({
         size='xl'
       />
       <p>{text}</p>
-    </a>
+    </Link>
   );
 }

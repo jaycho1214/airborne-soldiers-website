@@ -10,6 +10,7 @@ import {
   useForm,
 } from 'react-hook-form';
 import InputMask from 'react-input-mask';
+import Link from 'next/link';
 import { auth, database } from '@/api';
 import {
   FormSubmitButton,
@@ -75,13 +76,6 @@ export default function SignUp() {
       }
     },
     [setError, router],
-  );
-  const handleClickSignUp: MouseEventHandler<HTMLAnchorElement> = useCallback(
-    (event) => {
-      event.preventDefault();
-      router.push('/signin');
-    },
-    [router],
   );
 
   return (
@@ -230,13 +224,12 @@ export default function SignUp() {
           {customError && (
             <p className='text-red-500 my-1 self-center'>{customError}</p>
           )}
-          <a
+          <Link
             className='self-center'
             href='/signup'
-            onClick={handleClickSignUp}
           >
             로그인
-          </a>
+          </Link>
         </div>
       </form>
     </>

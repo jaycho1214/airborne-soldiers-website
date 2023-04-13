@@ -3,6 +3,7 @@ import { FormSubmitButton, Layout, Spinner, TextInput } from '@/components';
 import { useAuth } from '@/hooks';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { MouseEventHandler, useCallback, useEffect, useState } from 'react';
 import {
@@ -136,13 +137,12 @@ export default function SignIn() {
             />
           )}
           {error && <p className='text-red-500 my-1 self-center'>{error}</p>}
-          <a
+          <Link
             className='self-center'
             href='/signup'
-            onClick={handleClickSignUp}
           >
             회원가입
-          </a>
+          </Link>
         </div>
       </form>
     </>
