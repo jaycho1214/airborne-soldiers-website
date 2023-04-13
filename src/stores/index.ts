@@ -1,4 +1,4 @@
-import { User, IUser } from './User';
+import { User, IUser, Rank } from './User';
 
-export { User };
+export { User, Rank };
 export type { IUser };
