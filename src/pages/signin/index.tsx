@@ -138,7 +138,7 @@ export default function SignIn() {
           )}
           {error && <p className='text-red-500 my-1 self-center'>{error}</p>}
           <Link
-            className='self-center'
+            className='self-center mb-5'
             href='/signup'
           >
             회원가입
