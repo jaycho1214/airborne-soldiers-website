@@ -4,9 +4,9 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 config.autoAddCss = false;
 import { UserProvider } from '@/contexts';
 import '@/styles/globals.css';
-import { fas } from '@fortawesome/free-solid-svg-icons';
+import { faS, fas } from '@fortawesome/free-solid-svg-icons';
 
-library.add(fas);
+library.add(fas, faS);
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
