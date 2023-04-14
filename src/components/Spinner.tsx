@@ -25,7 +25,6 @@ export default function Spinner({ ...rest }: SpinnerProps) {
           fill='currentFill'
         />
       </svg>
-      <span class='sr-only'>Loading...</span>
     </div>
   );
 }
