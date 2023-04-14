@@ -2,7 +2,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { child, ref, set } from 'firebase/database';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { MouseEventHandler, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import {
   Controller,
   FieldValues,
@@ -226,7 +226,7 @@ export default function SignUp() {
           )}
           <Link
             className='self-center'
-            href='/signup'
+            href='/signin'
           >
             로그인
           </Link>
