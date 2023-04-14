@@ -1,11 +1,9 @@
-import { auth } from '@/api';
-import { FormSubmitButton, Layout, Spinner, TextInput } from '@/components';
-import { useAuth } from '@/hooks';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { observer } from 'mobx-react-lite';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { MouseEventHandler, useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import {
   Controller,
   FieldValues,
@@ -13,8 +11,11 @@ import {
   useForm,
 } from 'react-hook-form';
 import InputMask from 'react-input-mask';
+import { auth } from '@/api';
+import { FormSubmitButton, Layout, Spinner, TextInput } from '@/components';
+import { UserStore } from '@/stores';
 
-export default function SignIn() {
+function SignIn() {
   const {
     control,
     handleSubmit,
@@ -23,7 +24,7 @@ export default function SignIn() {
   } = useForm();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const { user } = useAuth();
+  const { user } = UserStore;
   const onSubmit: SubmitHandler<FieldValues> = useCallback(async (data) => {
     try {
       setLoading(true);
@@ -36,7 +37,10 @@ export default function SignIn() {
       const error: any = e;
       if (error.code === 'auth/user-not-found') {
         setError('해당 용사를 찾을 수 없습니다');
-      } else if (error.code === 'auth/invalid-password') {
+      } else if (
+        error.code === 'auth/invalid-password' ||
+        error.code === 'auth/wrong-password'
+      ) {
         setError('잘못된 비밀번호입니다');
       } else {
         setError('알 수 없는 오류가 발생했습니다');
@@ -46,13 +50,6 @@ export default function SignIn() {
     }
   }, []);
   const router = useRouter();
-  const handleClickSignUp: MouseEventHandler<HTMLAnchorElement> = useCallback(
-    (event) => {
-      event.preventDefault();
-      router.push('/signup');
-    },
-    [router],
-  );
 
   useEffect(() => {
     if (user) {
@@ -148,3 +145,5 @@ export default function SignIn() {
     </>
   );
 }
+
+export default observer(SignIn);
