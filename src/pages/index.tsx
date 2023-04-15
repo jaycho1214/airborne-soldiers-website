@@ -1,33 +1,80 @@
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import { Layout, Spinner } from '@/components';
-import { useAuth } from '@/hooks';
+import { MouseEventHandler, useCallback } from 'react';
+import { signOut } from 'firebase/auth';
+import { auth } from '@/api';
+import { UserStore } from '@/stores';
+import { Layout, Menu, Spinner } from '@/components';
+import { withAuth } from '@/hooks';
+import SpinnerPage from './SpinnerPage';
 
-export default function Home() {
-  const { user, loading } = useAuth();
-  const router = useRouter();
+function Home() {
+  const { user, loading } = UserStore;
 
-  useEffect(() => {
-    if (loading) return;
-    if (!user) {
-      router.push('/signin');
-    } else if (user && !user.verified) {
-      router.push('/verificationFailed');
-    }
-  }, [loading, user, router]);
+  const handleSignOut = useCallback(() => {
+    signOut(auth);
+  }, []);
 
-  if (loading) {
-    return (
-      <div className='flex flex-1 flex-col justify-center align-middle min-h-screen'>
-        <Spinner className='self-center' />
-      </div>
-    );
+  const preparing: MouseEventHandler<HTMLAnchorElement> = useCallback(
+    (event) => {
+      event.preventDefault();
+      alert('서비스 준비 중 입니다.');
+    },
+    [],
+  );
+
+  if (loading || !user) {
+    return <SpinnerPage />;
   }
 
   return (
     <>
       <Layout />
-      <p>{user?.uid}</p>
+      <div className='px-5 bg-black min-h-screen'>
+        <h2
+          className='font-bold mb-2 text-white'
+          style={{ fontSize: 30 }}
+        >{`${user.unit}중대 ${user.rank} ${user.name}`}</h2>
+        <Menu
+          icon={['fas', 'bullhorn']}
+          text='공지사항'
+          className='mb-4'
+          onClick={preparing}
+        />
+        <Menu
+          icon={['fas', 'computer']}
+          text='연등 사지방 신청'
+          className='mb-4'
+          href='/app/ssajibang'
+        />
+        <Menu
+          icon={['fas', 'comments']}
+          text='커뮤니티'
+          className='mb-4'
+          onClick={preparing}
+        />
+        <Menu
+          icon={['fas', 'heart']}
+          text='상담 신청'
+          className='mb-4'
+          onClick={preparing}
+        />
+        <Menu
+          icon={['fas', 'user-group']}
+          text='동아리 신청'
+          className='mb-4'
+          onClick={preparing}
+        />
+        <div className='flex justify-center align-middle self-center my-5'>
+          <button
+            className='text-red-500'
+            onClick={handleSignOut}
+          >
+            로그아웃
+          </button>
+        </div>
+        <p className='text-center text-white'>운영자: 조재영</p>
+      </div>
     </>
   );
 }
+
+export default withAuth(Home);
