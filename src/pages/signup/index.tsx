@@ -55,7 +55,7 @@ export default function SignUp() {
           name: data.name,
           rank: data.rank.value,
           serviceNumber: data.serviceNumber,
-          unit: data.unit,
+          unit: data.unit.value,
           verified: false,
         });
         router.push('/verificationFailed');
