@@ -20,17 +20,24 @@ function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        UserStore.setLoading(true);
-        get(child(ref(database), `users/${user.uid}`)).then((snapshot) => {
-          flushSync(() => {
-            if (snapshot.exists()) {
-              UserStore.updateUser(User.create(snapshot.val()));
-            } else {
-              UserStore.updateUser(null);
-            }
-          });
+        flushSync(() => {
+          UserStore.setLoading(true);
         });
-        UserStore.setLoading(false);
+        get(child(ref(database), `users/${user.uid}`))
+          .then((snapshot) => {
+            flushSync(() => {
+              if (snapshot.exists()) {
+                UserStore.updateUser(User.create(snapshot.val()));
+              } else {
+                UserStore.updateUser(null);
+              }
+            });
+          })
+          .finally(() => {
+            flushSync(() => {
+              UserStore.setLoading(false);
+            });
+          });
       } else {
         UserStore.updateUser(null);
         UserStore.setLoading(false);
