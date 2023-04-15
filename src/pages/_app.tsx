@@ -6,11 +6,14 @@ import '@/styles/globals.css';
 import { faS, fas } from '@fortawesome/free-solid-svg-icons';
 import { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
+import { child, get, ref } from 'firebase/database';
+import moment from 'moment';
 import { auth, database } from '@/api';
 import { User, UserStore } from '@/stores';
-import { child, get, ref } from 'firebase/database';
+import { flushSync } from 'react-dom';
 
 library.add(fas, faS);
+moment.locale('ko');
 
 function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -18,11 +21,13 @@ function App({ Component, pageProps }: AppProps) {
       if (user) {
         UserStore.setLoading(true);
         get(child(ref(database), `users/${user.uid}`)).then((snapshot) => {
-          if (snapshot.exists()) {
-            UserStore.updateUser(User.create(snapshot.val()));
-          } else {
-            UserStore.updateUser(null);
-          }
+          flushSync(() => {
+            if (snapshot.exists()) {
+              UserStore.updateUser(User.create(snapshot.val()));
+            } else {
+              UserStore.updateUser(null);
+            }
+          });
         });
         UserStore.setLoading(false);
       } else {
