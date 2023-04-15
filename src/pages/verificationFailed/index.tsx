@@ -39,7 +39,7 @@ export default function VerificationFailed() {
         >
           용사 확인중에 있습니다
         </h1>
-        <p className='text-center text-red-400'>운영자: 조재영</p>
+        <p className='text-center text-white'>운영자: 조재영</p>
       </div>
     </>
   );

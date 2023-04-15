@@ -32,8 +32,9 @@ export default function Menu({
         icon={icon}
         className='pr-5 self-center'
         size='xl'
+        color='white'
       />
-      <p>{text}</p>
+      <p className='text-white'>{text}</p>
     </Link>
   );
 }
