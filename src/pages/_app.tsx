@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { child, get, ref } from 'firebase/database';
 import moment from 'moment';
+import 'moment/locale/ko';
 import { auth, database } from '@/api';
 import { User, UserStore } from '@/stores';
 import { flushSync } from 'react-dom';
