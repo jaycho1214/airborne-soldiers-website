@@ -152,6 +152,9 @@ function SsajibangPage() {
           <p className='text-center text-red-600 mb-3'>
             신청은 당일 20시 55분 00초 까지
           </p>
+          <p className='text-center text-red-600 mb-3'>
+            결과 발표는 당일 20시 57분 00초
+          </p>
         </Box>
         <Box className='mb-5 pb-5'>
           <p
