@@ -1,12 +1,13 @@
 import { Layout } from '@/components';
-import { useAuth } from '@/hooks';
+import { UserStore } from '@/stores';
+import { observer } from 'mobx-react-lite';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
-export default function VerificationFailed() {
-  const { user, loading } = useAuth();
+function VerificationFailed() {
+  const { user, loading } = UserStore;
   const router = useRouter();
 
   useEffect(() => {
@@ -44,3 +45,5 @@ export default function VerificationFailed() {
     </>
   );
 }
+
+export default observer(VerificationFailed);
