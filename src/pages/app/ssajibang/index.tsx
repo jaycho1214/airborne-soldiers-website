@@ -1,6 +1,3 @@
-import { database } from '@/api';
-import { FormSubmitButton, Layout } from '@/components';
-import SpinnerPage from '@/pages/SpinnerPage';
 import { get, onValue, ref, runTransaction } from 'firebase/database';
 import {
   MouseEventHandler,
@@ -13,6 +10,9 @@ import moment from 'moment';
 import { observer } from 'mobx-react-lite';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IUser, UserStore } from '@/stores';
+import { database } from '@/api';
+import { FormSubmitButton, Layout } from '@/components';
+import { SpinnerPage } from '@/components';
 import { ResultModal } from './components';
 
 function SsajibangPage() {

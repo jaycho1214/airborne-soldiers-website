@@ -2,9 +2,8 @@ import { MouseEventHandler, useCallback } from 'react';
 import { signOut } from 'firebase/auth';
 import { auth } from '@/api';
 import { UserStore } from '@/stores';
-import { Layout, Menu, Spinner } from '@/components';
+import { Layout, Menu, SpinnerPage } from '@/components';
 import { withAuth } from '@/hooks';
-import SpinnerPage from './SpinnerPage';
 
 function Home() {
   const { user, loading } = UserStore;
