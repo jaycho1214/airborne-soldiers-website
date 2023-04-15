@@ -64,6 +64,7 @@ function SignIn() {
         action='#'
         method='POST'
         onSubmit={handleSubmit(onSubmit, () => console.log('CALLED'))}
+        className='bg-black'
       >
         <div className='flex flex-1 flex-col mx-8 align-middle min-h-screen'>
           <Image
@@ -97,7 +98,7 @@ function SignIn() {
                   onBlur={onBlur}
                   value={value}
                   name={name}
-                  className='p-5 w-full'
+                  className='p-5 w-full text-white'
                   style={{ backgroundColor: '#1C1C1C', borderRadius: 15 }}
                   placeholder='군 번'
                   inputMode='numeric'
@@ -111,12 +112,12 @@ function SignIn() {
               </div>
             )}
           />
-          <div className='flex flex-col my-2'>
+          <div className='flex flex-col my-2 text-white'>
             <TextInput
               {...register('password', { required: true, minLength: 6 })}
               type='password'
               placeholder='비밀번호'
-              className='w-full'
+              className='w-full text-white decoration-white bg-white'
             />
             {errors.password?.type === 'minLength' && (
               <p>비밀번호는 최소 6자 이상입니다</p>
@@ -135,7 +136,7 @@ function SignIn() {
           )}
           {error && <p className='text-red-500 my-1 self-center'>{error}</p>}
           <Link
-            className='self-center mb-5'
+            className='self-center mb-5 text-white'
             href='/signup'
           >
             회원가입

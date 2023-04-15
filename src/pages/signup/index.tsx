@@ -85,6 +85,7 @@ export default function SignUp() {
         action='#'
         method='POST'
         onSubmit={handleSubmit(onSubmit, () => console.log('CALLED'))}
+        className='bg-black'
       >
         <div className='flex flex-1 flex-col mx-8 align-middle min-h-screen'>
           <Image
@@ -118,7 +119,7 @@ export default function SignUp() {
                   onBlur={onBlur}
                   value={value}
                   name={name}
-                  className='p-5 w-full'
+                  className='p-5 w-full text-white'
                   style={{ backgroundColor: '#1C1C1C', borderRadius: 15 }}
                   placeholder='군 번'
                   inputMode='numeric'
@@ -132,12 +133,12 @@ export default function SignUp() {
               </div>
             )}
           />
-          <div className='flex flex-col my-2'>
+          <div className='flex flex-col my-2 text-white'>
             <TextInput
-              {...register('name', { required: true })}
               type='name'
               placeholder='이름'
-              className='w-full'
+              className='w-full text-white'
+              {...register('name', { required: true })}
             />
             {errors.name?.type === 'required' && (
               <p className='text-red-500 mt-1'>이름을 입력해주세요</p>
@@ -186,12 +187,12 @@ export default function SignUp() {
               )}
             />
           </div>
-          <div className='flex flex-col my-2'>
+          <div className='flex flex-col my-2 text-white'>
             <TextInput
               {...register('password', { required: true, minLength: 6 })}
               type='password'
               placeholder='비밀번호'
-              className='w-full'
+              className='w-full text-white'
             />
             {errors.password?.type === 'minLength' && (
               <p className='text-red-500 mt-1'>
@@ -202,12 +203,12 @@ export default function SignUp() {
               <p className='text-red-500 mt-1'>비밀번호를 입력해주세요</p>
             )}
           </div>
-          <div className='flex flex-col my-2'>
+          <div className='flex flex-col my-2 text-white'>
             <TextInput
               {...register('passwordConfirm', { required: true })}
               type='password'
               placeholder='비밀번호 확인'
-              className='w-full'
+              className='w-full text-white'
             />
             {errors.passwordConfirm && (
               <p className='text-red-500 mt-1'>비밀번호를 확인해주세요</p>
@@ -225,7 +226,7 @@ export default function SignUp() {
             <p className='text-red-500 my-1 self-center'>{customError}</p>
           )}
           <Link
-            className='self-center'
+            className='self-center text-white'
             href='/signin'
           >
             로그인
