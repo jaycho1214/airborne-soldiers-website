@@ -26,7 +26,7 @@ function SsajibangPage() {
   const [time, setTime] = useState('');
 
   const runAnimationFrame = useCallback(() => {
-    setTime(moment().format('ll HH:mm:ss:SSS'));
+    setTime(moment().format('ll HH시 mm분 ss초'));
     timeAnimationRef.current = requestAnimationFrame(runAnimationFrame);
   }, []);
 
