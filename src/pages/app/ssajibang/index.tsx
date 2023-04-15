@@ -11,7 +11,7 @@ import { observer } from 'mobx-react-lite';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IUser, UserStore } from '@/stores';
 import { database } from '@/api';
-import { FormSubmitButton, Layout } from '@/components';
+import { Box, FormSubmitButton, Layout } from '@/components';
 import { SpinnerPage } from '@/components';
 import { ResultModal } from './components';
 
@@ -128,26 +128,39 @@ function SsajibangPage() {
     <>
       <Layout />
       <div className='flex flex-col justify-center min-h-screen bg-black'>
-        <FontAwesomeIcon
-          icon={['fas', 'computer']}
-          size='5x'
-          className='my-10'
-          color='#fff'
-        />
-        <h1
-          className='font-bold my-5 text-center text-white'
-          style={{ fontSize: 25 }}
-        >
-          연등 사지방 신청
-        </h1>
-        <p className='text-center text-red-500'>
-          신청은 당일 20시 55분 00초 까지
-        </p>
-        <p className='text-center my-5 text-white'>{time}</p>
-        <p className='text-center my-3 text-white'>
-          신청 명단 {data.applicants.length}명
-        </p>
-        <div className='flex flex-col my-3 justify-center'>
+        <Box className='mb-5'>
+          <FontAwesomeIcon
+            icon={['fas', 'computer']}
+            size='5x'
+            className='mt-5'
+            color='#fff'
+          />
+          <h1
+            className='font-bold my-5 text-center text-white'
+            style={{ fontSize: 25 }}
+          >
+            연등 사지방 신청
+          </h1>
+        </Box>
+        <Box className='mb-5 py-5'>
+          <p
+            className='text-center mb-5 text-white font-bold'
+            style={{ fontSize: 20 }}
+          >
+            {time}
+          </p>
+          <p className='text-center text-red-600 mb-3'>
+            신청은 당일 20시 55분 00초 까지
+          </p>
+        </Box>
+        <Box className='mb-5 pb-5'>
+          <p
+            className='text-center mt-3 text-white font-bold '
+            style={{ fontSize: 25 }}
+          >
+            신청 명단 {data.applicants.length}명
+          </p>
+          <div className='flex flex-col my-3 justify-center'></div>
           {data.applicants.map((applicant) => (
             <p
               key={applicant.uid}
@@ -156,7 +169,7 @@ function SsajibangPage() {
               {`${applicant.rank} ${applicant.name}`}
             </p>
           ))}
-        </div>
+        </Box>
         {data.results.length > 0 && (
           <FormSubmitButton
             className='my-5'
