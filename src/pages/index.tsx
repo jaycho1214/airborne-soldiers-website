@@ -31,7 +31,7 @@ function Home() {
         <h2
           className='font-bold mb-2 text-white'
           style={{ fontSize: 30 }}
-        >{`${user.unit}중대 ${user.rank} ${user.name}`}</h2>
+        >{`${user.rank} ${user.name}`}</h2>
         <Menu
           icon={['fas', 'bullhorn']}
           text='공지사항'
