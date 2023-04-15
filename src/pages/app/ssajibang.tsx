@@ -13,7 +13,7 @@ import { IUser, UserStore } from '@/stores';
 import { database } from '@/api';
 import { Box, FormSubmitButton, Layout } from '@/components';
 import { SpinnerPage } from '@/components';
-import { ResultModal } from './components';
+import { ResultModal } from '@/components/ssajibang';
 
 function SsajibangPage() {
   const [loading, setLoading] = useState(true);
