@@ -16,6 +16,15 @@ export const UserStore = types
     updateUser(newUser: IUser | null) {
       self.user = newUser;
     },
+    refresh: flow(function* () {
+      if (self.user == null) return;
+      const snapshot: DataSnapshot = yield get(
+        child(ref(database), `users/${self.user.uid}`),
+      );
+      if (snapshot.exists()) {
+        self.user = User.create(snapshot.val());
+      }
+    }),
     fetchUser: flow(function* (uid: string) {
       const cachedRes = self.cachedUsers.find((u) => u.uid === uid);
       if (cachedRes) return cachedRes;
