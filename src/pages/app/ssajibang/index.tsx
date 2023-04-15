@@ -21,7 +21,6 @@ function SsajibangPage() {
     applicants: [] as IUser[],
     results: [],
   });
-  const [log, setLog] = useState('');
   const [modalOpened, setModalOpened] = useState(false);
   const timeAnimationRef = useRef<number | null>(null);
   const [time, setTime] = useState('');
