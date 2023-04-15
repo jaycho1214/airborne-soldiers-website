@@ -1,8 +1,0 @@
-{
-  "crons": [
-    {
-      "path": "/api/ssajibang/pickApplicants",
-      "schedule": "56 20 * * *"
-    }
-  ]
-}
