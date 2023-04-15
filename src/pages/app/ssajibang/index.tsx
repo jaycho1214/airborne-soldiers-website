@@ -13,7 +13,7 @@ import moment from 'moment';
 import { observer } from 'mobx-react-lite';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IUser, UserStore } from '@/stores';
-import ResultModal from './ResultModal';
+import { ResultModal } from './components';
 
 function SsajibangPage() {
   const [loading, setLoading] = useState(true);
